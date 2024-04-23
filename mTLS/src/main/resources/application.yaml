@@ -1,0 +1,19 @@
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:cert/server.p12
+    key-store-password: heslo
+    key-store-type: PKCS12
+    client-auth: NEED
+    trust-store: classpath:cert/truststore.p12
+    trust-store-password: password
+    trust-store-type: PKCS12
+  tomcat:
+    basedir: .
+    accesslog.enabled: true
+    accesslog.dailyRotate: true
+    accesslog.pattern: "[%{YYYY-MM-dd'T'HH:MM:ssXXX}t] %a (%T) $I \"%r\" %s %b \"%{referer}i\" \"%{user-agent}i\" %{org.apache.tomcat.util.net.secure_protocol_version}r %{jakarta.servlet.request.cipher_suite}r %A:%{remote}p %T \"%{X-Correlation-Id}i\" \"%{x-api-name}i\""
+
+cert:
+  whiteList: >
+    1.2.840.113549.1.9.1=#160e746a65636840747261736b2e637a,CN=Client,OU=Client,O=Prague,L=Prague,ST=CZ,C=CZ;
